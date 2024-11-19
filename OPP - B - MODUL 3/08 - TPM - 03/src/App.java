@@ -6,9 +6,9 @@ class HitungGajiBersih {
 
     // contructor
     public HitungGajiBersih() {
-        this.gaji_pokok = 10000;
-        this.Tunjangan = 5000;
-        this.pajak = 10.5;
+        this.gaji_pokok = 0;
+        this.Tunjangan = 0;
+        this.pajak = 0.0;
     }
 
     // sett gaji_pokok
@@ -37,22 +37,27 @@ class HitungGajiBersih {
     }
 
     // gett pajak
-    public double getPajak(int pajak) {
-        return pajak;
+    public double getPajak() {
+        double totalPendapatan = gaji_pokok + Tunjangan;
+        return pajak = totalPendapatan * (pajak / 100);
     }
 
     // metode mencetak gaji bersih
     public void CetakGajiBersih() {
-        double nilaiPajak = gaji_pokok * (pajak / 100);
-        double gajiBersih = gaji_pokok + Tunjangan - nilaiPajak;
+        double gajiBersih = gaji_pokok + Tunjangan - getPajak();
 
         System.out.println("gajiBersih :" + gajiBersih);
+
     }
 }
 
 public class App {
     public static void main(String[] args) throws Exception {
         HitungGajiBersih gBersih = new HitungGajiBersih();
+
+        gBersih.setgaji_pokok(15000);
+        gBersih.setTunjangan(5000);
+        gBersih.setPajak(2);
 
         // cetak GajiBersih
         gBersih.CetakGajiBersih();
